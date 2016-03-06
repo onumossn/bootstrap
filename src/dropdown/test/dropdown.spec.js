@@ -54,14 +54,14 @@ describe('uib-dropdown', function() {
       expect(element).toHaveClass(dropdownConfig.openClass);
 
       var optionEl = element.find('ul > li').eq(0).find('a').eq(0);
-      optionEl.click();
+      optionEl[0].click();
       expect(element).not.toHaveClass(dropdownConfig.openClass);
     });
 
     it('should close on document click', function() {
       clickDropdownToggle();
       expect(element).toHaveClass(dropdownConfig.openClass);
-      $document.click();
+      $document[0].body.click();
       expect(element).not.toHaveClass(dropdownConfig.openClass);
     });
 
@@ -186,7 +186,7 @@ describe('uib-dropdown', function() {
       expect(element).toHaveClass(dropdownConfig.openClass);
 
       $rootScope.$apply(function() {
-        $document.click();
+        $document[0].body.click();
       });
 
       expect(element).not.toHaveClass(dropdownConfig.openClass);
@@ -455,7 +455,7 @@ describe('uib-dropdown', function() {
         element = dropdown();
         clickDropdownToggle();
         expect(element).toHaveClass(dropdownConfig.openClass);
-        $document.click();
+        $document[0].body.click();
         expect(element).not.toHaveClass(dropdownConfig.openClass);
       });
 
@@ -463,7 +463,7 @@ describe('uib-dropdown', function() {
         element = dropdown('');
         clickDropdownToggle();
         expect(element).toHaveClass(dropdownConfig.openClass);
-        $document.click();
+        $document[0].body.click();
         expect(element).not.toHaveClass(dropdownConfig.openClass);
       });
     });
@@ -540,7 +540,7 @@ describe('uib-dropdown', function() {
         expect(element).toHaveClass(dropdownConfig.openClass);
         element.find('ul li a').click();
         expect(element).toHaveClass(dropdownConfig.openClass);
-        $document.click();
+        $document[0].body.click();
         expect(element).not.toHaveClass(dropdownConfig.openClass);
       });
 
@@ -551,7 +551,7 @@ describe('uib-dropdown', function() {
         expect(dropdownMenu.parent()).toHaveClass(dropdownConfig.appendToOpenClass);
         dropdownMenu.find('li').eq(0).trigger('click');
         expect(dropdownMenu.parent()).toHaveClass(dropdownConfig.appendToOpenClass);
-        $document.click();
+        $document[0].body.click();
         expect(dropdownMenu.parent()).not.toHaveClass(dropdownConfig.appendToOpenClass);
       });
     });

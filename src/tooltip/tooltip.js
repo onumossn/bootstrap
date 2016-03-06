@@ -490,7 +490,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
               });
               triggers.hide.forEach(function(trigger) {
                 if (trigger === 'outsideClick') {
-                  $document.off('click', bodyHideTooltipBind);
+                  $document[0].removeEventListener('click', bodyHideTooltipBind, true);
                 } else {
                   element.off(trigger, hideTooltipBind);
                 }
@@ -507,7 +507,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
                 triggers.show.forEach(function(trigger, idx) {
                   if (trigger === 'outsideClick') {
                     element.on('click', toggleTooltipBind);
-                    $document.on('click', bodyHideTooltipBind);
+                    $document[0].addEventListener('click', bodyHideTooltipBind, true);
                   } else if (trigger === triggers.hide[idx]) {
                     element.on(trigger, toggleTooltipBind);
                   } else if (trigger) {
